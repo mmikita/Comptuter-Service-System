@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<link 
+href="../static/css/bootstrap.min.css"
+th:href="@{/css/bootstrap.min.css}" 
+type="text/css" 
+rel="stylesheet"
+
+/>
+</head>
+<body>
+
+<header>
+
+<nav class="navbar navbar-default">
+<ul>
+<li>
+tak
+</li>
+<li>
+nie
+</li>
+</ul>
+</nav>
+</header>
+
+<main class="container">
+<form method="post" action="" th:object="${tr}">
+
+<label>imie klienta</label>
+<br/>
+<input type = "text" th:field="*{clientName}"/>
+<br/>
+<label>nazwisko klienta</label>
+<br/>
+<input type = "text" th:field="*{clientLastName}"/>
+<br/>
+<label>telefon do klienta</label>
+<br/>
+<input type = "text" th:field="*{phoneNumber}"/>
+<br/>
+<label>Email klienta</label>
+<br/>
+<input type = "text" th:field="*{clientmail}"/>
+<br />
+<label>koszt</label>
+<br/>
+<input type = "text" th:field="*{price}"/>
+<br/>
+<label>numer seryjny</label>
+<br/>
+<input type = "text" th:field="*{serialNumber}"/>
+<br/>
+<label>uwagi</label>
+<br/>
+<input type = "text" th:field="*{comments}"/>
+<br/>
+<label>model</label>
+<br/>
+<input type = "text" th:field="*{model}"/>
+<br/> <br/>
+<input type = "submit" value="dodaj"/>
+</form>
+</main>
+</body>
+</html>
