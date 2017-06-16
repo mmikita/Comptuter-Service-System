@@ -22,6 +22,21 @@ public class Transaction {
 	private Date endDate;
 	private String model;
 	private String comments;
+	private String deliveryMethod;
+	
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", price=" + price + ", clientName=" + clientName + ", clientLastName="
+				+ clientLastName + ", serialNumber=" + serialNumber + ", phoneNumber=" + phoneNumber + ", clientmail="
+				+ clientmail + ", startDate=" + startDate + ", endDate=" + endDate + ", model=" + model + ", comments="
+				+ comments + ", deliveryMethod=" + deliveryMethod + "]";
+	}
+	public String getDeliveryMethod() {
+		return deliveryMethod;
+	}
+	public void setDeliveryMethod(String deliveryMethod) {
+		this.deliveryMethod = deliveryMethod;
+	}
 	public double getPrice() {
 		return price;
 	}
@@ -63,13 +78,6 @@ public class Transaction {
 		return id;
 	}
 	
-	@Override
-	public String toString() {
-		return "Transaction [id=" + id + ", price=" + price + ", clientName=" + clientName + ", clientLastName="
-				+ clientLastName + ", serialNumber=" + serialNumber + ", phoneNumber=" + phoneNumber + ", clientmail="
-				+ clientmail + ", startDate=" + startDate + ", endDate=" + endDate + ", model=" + model + ", comments="
-				+ comments + "]";
-	}
 	public void setId(Long id) {
 		this.id = id;
 	}

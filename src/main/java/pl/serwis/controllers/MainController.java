@@ -35,7 +35,6 @@ public class MainController {
 	@RequestMapping(value = "/serwis/add", method=RequestMethod.POST)
 	public String addTransactionPost(@ModelAttribute Transaction tr) {
 	
-		System.out.println(tr);
 		service.addTranstacion(tr);
 		return "MainPage";
 	}
