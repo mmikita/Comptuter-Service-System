@@ -67,22 +67,18 @@
 			<td th:text="${tr.model}"></td>
 			<td th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></td>
 			<td th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></td>
-			<td th:object="${tr}">
+			<td>
+				<!-- 	<h1 th:text="*{status}"></h1> -->
 
-			<!-- 	<h1 th:text="*{status}"></h1> -->
-				
-				
-			<select>
-					<option
-					th:each="stan : ${states}"
-					 th:value="${stan}"
-					 th:text="${stan}"
-					th:selected="${tr.status==stan}"
-					 ></option>
-			
-			</select>
-				
-		
+				<form th:method="post" action="/serwis/updateOne"  >
+				<input id="id" name="id" type="hidden"  th:value="${tr.id}"/>
+					<select id="status" name="status" class="form-control" onchange="this.form.submit()">
+						<option th:each="stan : ${states}" th:value="${stan}"
+							th:text="${stan}" th:selected="${tr.status==stan}"></option>
+
+					</select>
+				</form>
+
 
 			</td>
 			<td><a href="#"> szczegóły</a></td>
