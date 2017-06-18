@@ -23,13 +23,21 @@ public class Transaction {
 	private String model;
 	private String comments;
 	private String deliveryMethod;
+	private String status;
+	
 	
 	@Override
 	public String toString() {
 		return "Transaction [id=" + id + ", price=" + price + ", clientName=" + clientName + ", clientLastName="
 				+ clientLastName + ", serialNumber=" + serialNumber + ", phoneNumber=" + phoneNumber + ", clientmail="
 				+ clientmail + ", startDate=" + startDate + ", endDate=" + endDate + ", model=" + model + ", comments="
-				+ comments + ", deliveryMethod=" + deliveryMethod + "]";
+				+ comments + ", deliveryMethod=" + deliveryMethod + ", status=" + status + "]";
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getDeliveryMethod() {
 		return deliveryMethod;

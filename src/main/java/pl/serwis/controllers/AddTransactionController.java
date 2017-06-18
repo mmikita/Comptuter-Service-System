@@ -13,7 +13,7 @@ import pl.seriws.model.Transaction;
 import pl.serwis.service.TransactionService;
 
 @Controller
-public class MainController {
+public class AddTransactionController {
 	
 	@Autowired
 	TransactionService service;

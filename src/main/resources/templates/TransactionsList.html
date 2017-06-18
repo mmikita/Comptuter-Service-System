@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org/">
+<head>
+<meta charset="UTF-8" />
+<title>Lista napraw</title>
+<link th:href="@{/css/bootstrap.min.css}" type="text/css"
+	rel="stylesheet" />
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+	<header>
+		<div class="row">
+			<div class="center col-md-6 text-center"
+				style="font-size: 40px; margin-top: 60px;">System serwisu
+				komputerowego</div>
+			<div>
+
+				<img th:src="@{/img/mother-board.jpg}" class="col-md-6 img-circle"
+					style="width: 250px; height: 200px;" />
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Dodaj naprawe</a></li>
+					<li class="active"><a href="/serwis/allRepairs">Lista
+							napraw</a></li>
+					<li><a href="#">Notatki</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/serwis/allRepairs">Wszystkie</a></li>
+					<li><a href="#">w trakcie</a></li>
+					<li><a href="#">zakonczone</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id naprawy</th>
+				<th>imie klienta</th>
+				<th>nazwisko klienta</th>
+				<th>koszt</th>
+				<th>model</th>
+				<th>data przyjecia</th>
+				<th>data koncowa</th>
+				<th>status naprawy</th>
+				<th>szczegóły</th>
+			</tr>
+		</thead>
+		<tr th:each="tr : ${transactions}">
+			<td th:text="*{tr.id}"></td>
+			<td th:text="${tr.clientName}"></td>
+			<td th:text="${tr.clientLastName}"></td>
+			<td th:text="${tr.price}"></td>
+			<td th:text="${tr.model}"></td>
+			<td th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></td>
+			<td th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></td>
+			<td th:object="${tr}">
+
+			<!-- 	<h1 th:text="*{status}"></h1> -->
+				
+				
+			<select>
+					<option
+					th:each="stan : ${states}"
+					 th:value="${stan}"
+					 th:text="${stan}"
+					th:selected="${tr.status==stan}"
+					 ></option>
+			
+			</select>
+				
+		
+
+			</td>
+			<td><a href="#"> szczegóły</a></td>
+
+		</tr>
+
+
+	</table>
+
+
+
+</body>
+</html>

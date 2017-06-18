@@ -1,5 +1,8 @@
 package pl.serwis.service;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +17,14 @@ public class TransactionService {
 	
 	public void addTranstacion(Transaction tr)
 	{
+		tr.setStartDate(new Date());
 		repository.save(tr);
 	}
-	
+	 public List<Transaction> getAllTransactions()
+	 {
+		 List<Transaction> allRepairs = repository.findAll();
+	 return allRepairs;
+	 }
 	
 	
 }

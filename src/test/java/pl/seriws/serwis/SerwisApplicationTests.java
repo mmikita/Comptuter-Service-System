@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pl.seriws.model.Transaction;
+import pl.seriws.repository.TransactionRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,6 +35,8 @@ System.out.println("DZIAlaj!!!!!");
 		Transaction[] array = mapper.readValue(new File("C:\\Users\\Paster0\\Desktop\\serwis\\listTransaction.json"),  Transaction[].class);
 		List<Transaction> transArray = Arrays.asList(array);
 		System.out.println(transArray);
+		
+		
 	
 
 	

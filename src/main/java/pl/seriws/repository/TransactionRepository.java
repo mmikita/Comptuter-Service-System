@@ -8,7 +8,6 @@ import pl.seriws.model.Transaction;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> 
-
 {
 
 }
