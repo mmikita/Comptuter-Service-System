@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <title>Szczegóły naprawy</title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link th:href="@{/css/bootstrap.min.css}" type="text/css"
 	rel="stylesheet" />
 
@@ -43,7 +46,7 @@
 
 	</header>
 
-	<div id="container">
+	<div id="container" class="container-fluid">
 		<div id="info" th:object="${tr}">
 			<dl class="dl-horizontal">
 				<dt>id naprawy</dt>
@@ -51,9 +54,6 @@
 				
 				<dt>imie klienta</dt>
 				<dd th:text="*{clientName}"></dd>
-				
-				<dt>nazwisko klienta</dt>
-				<dd th:text="*{clientLastName}"></dd>
 				
 				<dt>nazwisko klienta</dt>
 				<dd th:text="*{clientLastName}"></dd>
@@ -71,8 +71,11 @@
 				<dt>E-mail</dt>
 				<dd th:text="*{clientmail}"></dd>
 				
-				<dt>Data rozpoczecia</dt>
-				<dd th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></dd>
+			
+				
+					<dt>Data rozpoczecia</dt>
+				<dd th:if="${tr.startDate != null}" th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></dd>
+				<dd th:if="${tr.startDate == null}">-</dd>
 				
 				<dt>Data zakonczenia</dt>
 				<dd th:if="${tr.endDate != null}" th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></dd>
@@ -89,12 +92,36 @@
 				
 				<dt>uwagi</dt>
 				<dd th:text="*{comments}">-</dd>
-				
 			</dl>
 			
 
 		</div>
-		<div id="opcje"></div>
+		
+            <div class="row" style="padding-bottom: 30px">
+                <div class="col-xs-6 col-sm-3">
+                    <a th:href="@{/serwis/editRepair/{id}(id=${tr.id})}">Edytuj</a>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <a href="#">Usun</a>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <a href="#">Wydrukuj potwierdzenie</a>
+                </div>
+                   <div class="col-xs-6 col-sm-3">
+                    <a href="#">Wydrukuj fakture</a>
+                </div>
+                
+                
+            </div>
+
+		<div class="row">
+		<!-- 
+		<div id="opcje" class="col-md-3 col-md-offset-3">
+		<a th:href="@{/serwis/editRepair/{id}(id=${tr.id})}">Edytuj</a>
+		</div>
+		 -->
+</div>
+
 
 	</div>
 

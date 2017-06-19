@@ -26,13 +26,19 @@ public class TransactionService {
 	 return allRepairs;
 	 }
 	 
-	 public void updateTransaction(String id, String status)
+	 public void updateTransactionStatus(String id, String status)
 	 {
 		 Transaction tr = repository.findOne(Long.parseLong(id));
 		 tr.setStatus(status);
 		 repository.save(tr);
 		 //System.out.println(tr);
 		// repository.save(tr);
+		 
+	 }
+	 
+	 public void updateTransaction(Transaction tr)
+	 {
+		 repository.save(tr);
 		 
 	 }
 	 

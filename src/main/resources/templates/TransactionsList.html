@@ -80,7 +80,11 @@ $(window).scroll(function() {
 				<td th:text="${tr.clientLastName}"></td>
 				<td th:text="${tr.price}"></td>
 				<td th:text="${tr.model}"></td>
-				<td  th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></td>
+				
+				<td th:if="${tr.startDate != null}" th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></td>
+				<td th:if="${tr.startDate == null}"><span style="margin-left: 30px">-</span></td>
+				
+				
 				<td th:if="${tr.endDate != null}" th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></td>
 				<td th:if="${tr.endDate == null}"><span style="margin-left: 30px">-</span></td>
 				<td>
@@ -97,7 +101,7 @@ $(window).scroll(function() {
 
 
 				</td>
-				<td><a href="#"> szczegóły</a></td>
+				<td><a th:href="@{/serwis/repairDetails/{id}(id=${tr.id})}"> szczegóły</a></td>
 			</tr>
 
 

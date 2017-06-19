@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org/">
+<head>
+<meta charset="UTF-8" />
+<title>Edytuj naprawe</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link th:href="@{/css/bootstrap.min.css}" type="text/css"
+	rel="stylesheet" />
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+	<header>
+		<div class="row">
+			<div class="center col-md-6 text-center"
+				style="font-size: 40px; margin-top: 60px;">System serwisu
+				komputerowego</div>
+			<div>
+
+				<img th:src="@{/img/mother-board.jpg}" class="col-md-6 img-circle"
+					style="width: 250px; height: 200px;" />
+			</div>
+		</div>
+
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid" style="margin-left: 110px;">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/serwis/add">Dodaj naprawe</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Lista napraw<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/serwis/allRepairs">Wszystkie naprawy</a></li>
+							<li><a href="#">Oczekujące naprawy</a></li>
+							<li><a href="#">Bieżące naprawy</a></li>
+							<li><a href="#">Zakonczone naprawy</a></li>
+						</ul></li>
+					<li><a href="#">Notatki</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	</header>
+
+
+	<div class="container"
+		style="width: 900px; margin-left: auto; margin-right: auto;">
+
+		<form class="form-horizontal" method="post"
+			action="/serwis/editRepair" th:object="${tr}">
+
+			<input type="hidden" th:field="*{id}" /> 
+			<!-- 
+			<input type="hidden"
+				th:field="*{startDate}" /> <input type="hidden"
+				th:field="*{endDate}" />
+ -->
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">imie
+					klienta</label>
+				<div class="col-sm-10">
+					<input class="form-control" id="name" type="text"
+						th:field="*{clientName}" />
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label for="lastName" class="col-sm-2 control-label">nazwisko
+					klienta</label>
+				<div class="col-sm-10">
+					<input class="form-control" id="lastName" type="text"
+						th:field="*{clientLastName}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<label class="col-sm-2 control-label">telefon do klienta</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" th:field="*{phoneNumber}" />
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Email klienta</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" th:field="*{clientmail}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Data rozpoczecia</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" 
+					th:field="*{startDate}" 
+				 />
+				</div>
+			</div>
+			
+				<div class="form-group">
+				<label class="col-sm-2 control-label">Data zakonczenia</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" 
+					th:field="*{endDate}" 
+				 />
+				</div>
+			</div>
+
+
+			<div class="form-group">
+
+				<label class="col-sm-2 control-label">koszt</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" th:field="*{price}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">numer seryjny</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" th:field="*{serialNumber}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<label class="col-sm-2 control-label">model</label>
+				<div class="col-sm-10">
+
+					<input class="form-control" type="text" th:field="*{model}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">status naprawy</label>
+				<div class="col-sm-10">
+					<select class="form-control" th:field="*{status}">
+						<option value="oczekujaca">oczekujaca</option>
+						<option value="w trakcie">w trakcie</option>
+						<option value="zakonczona">zakonczona</option>
+
+
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">uwagi</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" rows="3" type="textare"
+						th:field="*{comments}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<input class="btn pull-right" type="submit" value="edytuj" />
+			</div>
+
+
+
+		</form>
+	</div>
+
+
+</body>
+</html>
