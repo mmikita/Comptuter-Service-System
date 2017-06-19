@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org/">
+<head>
+<meta charset="UTF-8" />
+<title>Szczegóły naprawy</title>
+<link th:href="@{/css/bootstrap.min.css}" type="text/css"
+	rel="stylesheet" />
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+	<header>
+		<div class="row">
+			<div class="center col-md-6 text-center"
+				style="font-size: 40px; margin-top: 60px;">System serwisu
+				komputerowego</div>
+			<div>
+
+				<img th:src="@{/img/mother-board.jpg}" class="col-md-6 img-circle"
+					style="width: 250px; height: 200px;" />
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid" style="margin-left: 110px;">
+				<ul class="nav navbar-nav">
+					<li><a href="/serwis/add">Dodaj naprawe</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Lista napraw<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/serwis/allRepairs">Wszystkie naprawy</a></li>
+							<li><a href="#">Oczekujące naprawy</a></li>
+							<li><a href="#">Bieżące naprawy</a></li>
+							<li><a href="#">Zakonczone naprawy</a></li>
+						</ul></li>
+						  <li><a href="#">Notatki</a></li>
+				</ul>
+			</div>
+		</nav>
+
+
+	</header>
+
+	<div id="container">
+		<div id="info" th:object="${tr}">
+			<dl class="dl-horizontal">
+				<dt>id naprawy</dt>
+				<dd th:text="*{id}"></dd>
+				
+				<dt>imie klienta</dt>
+				<dd th:text="*{clientName}"></dd>
+				
+				<dt>nazwisko klienta</dt>
+				<dd th:text="*{clientLastName}"></dd>
+				
+				<dt>nazwisko klienta</dt>
+				<dd th:text="*{clientLastName}"></dd>
+				
+				<dt>model</dt>
+				<dd th:text="*{model}"></dd>
+				
+				
+				<dt>numer seryjny</dt>
+				<dd th:text="*{serialNumber}"></dd>
+				
+				<dt>telefon</dt>
+				<dd th:text="*{phoneNumber}"></dd>
+				
+				<dt>E-mail</dt>
+				<dd th:text="*{clientmail}"></dd>
+				
+				<dt>Data rozpoczecia</dt>
+				<dd th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></dd>
+				
+				<dt>Data zakonczenia</dt>
+				<dd th:if="${tr.endDate != null}" th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></dd>
+				<dd th:if="${tr.endDate == null}">-</dd>
+				
+				<dt>sposob dostarczenia</dt>
+				<dd th:text="*{deliveryMethod}">-</dd>
+				
+				<dt>status</dt>
+				<dd th:text="*{status}">-</dd>
+				
+				<dt>koszt</dt>
+				<dd th:text="*{price}"></dd>
+				
+				<dt>uwagi</dt>
+				<dd th:text="*{comments}">-</dd>
+				
+			</dl>
+			
+
+		</div>
+		<div id="opcje"></div>
+
+	</div>
+
+</body>
+</html>

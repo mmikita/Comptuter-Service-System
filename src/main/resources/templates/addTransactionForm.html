@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Dodaj naprawe</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link 
 	th:href="@{/css/bootstrap.min.css}" type="text/css" rel="stylesheet" />
 	
@@ -20,20 +22,29 @@
 			</div>
 		</div>
 
-		<nav class="navbar navbar-default"> 
-		 <div class="container-fluid">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Dodaj naprawe</a></li>
-				<li><a href="/serwis/allRepairs">Lista napraw</a></li>
-				<li><a href="#">Notatki</a></li>
-			</ul>
+	
+			<nav class="navbar navbar-default">
+			<div class="container-fluid" style="margin-left: 110px;">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/serwis/add">Dodaj naprawe</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Lista napraw<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/serwis/allRepairs">Wszystkie naprawy</a></li>
+							<li><a href="#">Oczekujące naprawy</a></li>
+							<li><a href="#">Bieżące naprawy</a></li>
+							<li><a href="#">Zakonczone naprawy</a></li>
+						</ul></li>
+						  <li><a href="#">Notatki</a></li>
+				</ul>
 			</div>
 		</nav>
-		
 	
 	</header>
+	
 
-	<main class="container">
+
 	<form class="form-horizontal" method="post" action="" th:object="${tr}">
 
   <div class="form-group">
@@ -121,6 +132,5 @@
 		 <input class="btn pull-right" type="submit" value="dodaj" />
 	</div>
 	</form>
-	</main>
 </body>
 </html>

@@ -3,10 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <title>Lista napraw</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link th:href="@{/css/bootstrap.min.css}" type="text/css"
 	rel="stylesheet" />
-
 <script th:src="@{/js/bootstrap.min.js}"></script>
+
+<script>
+
+$(window).scroll(function() {
+	  sessionStorage.scrollTop = $(this).scrollTop();
+	});
+
+	$(document).ready(function() {
+	  if (sessionStorage.scrollTop != "undefined") {
+	    $(window).scrollTop(sessionStorage.scrollTop);
+	  }
+	});
+</script>
 
 </head>
 <body>
@@ -24,70 +38,71 @@
 		</div>
 
 		<nav class="navbar navbar-default">
-			<div class="container-fluid">
+			<div class="container-fluid" style="margin-left: 110px;">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Dodaj naprawe</a></li>
-					<li class="active"><a href="/serwis/allRepairs">Lista
-							napraw</a></li>
-					<li><a href="#">Notatki</a></li>
+					<li><a href="/serwis/add">Dodaj naprawe</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Lista napraw<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/serwis/allRepairs">Wszystkie naprawy</a></li>
+							<li><a href="#">Oczekujące naprawy</a></li>
+							<li><a href="#">Bieżące naprawy</a></li>
+							<li><a href="#">Zakonczone naprawy</a></li>
+						</ul></li>
+						  <li><a href="#">Notatki</a></li>
 				</ul>
 			</div>
 		</nav>
+		
 
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/serwis/allRepairs">Wszystkie</a></li>
-					<li><a href="#">w trakcie</a></li>
-					<li><a href="#">zakonczone</a></li>
-				</ul>
-			</div>
-		</nav>
+	
 	</header>
+	<div style="width: 1100px; margin-left: auto; margin-right: auto;">
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>id naprawy</th>
-				<th>imie klienta</th>
-				<th>nazwisko klienta</th>
-				<th>koszt</th>
-				<th>model</th>
-				<th>data przyjecia</th>
-				<th>data koncowa</th>
-				<th>status naprawy</th>
-				<th>szczegóły</th>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>id naprawy</th>
+					<th>imie klienta</th>
+					<th>nazwisko klienta</th>
+					<th>koszt</th>
+					<th>model</th>
+					<th>data przyjecia</th>
+					<th>data koncowa</th>
+					<th>status naprawy</th>
+					<th>szczegóły</th>
+				</tr>
+			</thead>
+			<tr th:each="tr : ${transactions}">
+				<td th:text="*{tr.id}"></td>
+				<td th:text="${tr.clientName}"></td>
+				<td th:text="${tr.clientLastName}"></td>
+				<td th:text="${tr.price}"></td>
+				<td th:text="${tr.model}"></td>
+				<td  th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></td>
+				<td th:if="${tr.endDate != null}" th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></td>
+				<td th:if="${tr.endDate == null}"><span style="margin-left: 30px">-</span></td>
+				<td>
+					<!-- szybka zmiana stanu -->
+					<form th:method="post" action="/serwis/updateOne">
+						<input id="id" name="id" type="hidden" th:value="${tr.id}" /> <select
+							id="status" name="status" class="form-control"
+							onchange="this.form.submit()">
+							<option th:each="stan : ${states}" th:value="${stan}"
+								th:text="${stan}" th:selected="${tr.status==stan}"></option>
+
+						</select>
+					</form>
+
+
+				</td>
+				<td><a href="#"> szczegóły</a></td>
 			</tr>
-		</thead>
-		<tr th:each="tr : ${transactions}">
-			<td th:text="*{tr.id}"></td>
-			<td th:text="${tr.clientName}"></td>
-			<td th:text="${tr.clientLastName}"></td>
-			<td th:text="${tr.price}"></td>
-			<td th:text="${tr.model}"></td>
-			<td th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></td>
-			<td th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></td>
-			<td>
-				<!-- 	<h1 th:text="*{status}"></h1> -->
-
-				<form th:method="post" action="/serwis/updateOne"  >
-				<input id="id" name="id" type="hidden"  th:value="${tr.id}"/>
-					<select id="status" name="status" class="form-control" onchange="this.form.submit()">
-						<option th:each="stan : ${states}" th:value="${stan}"
-							th:text="${stan}" th:selected="${tr.status==stan}"></option>
-
-					</select>
-				</form>
 
 
-			</td>
-			<td><a href="#"> szczegóły</a></td>
-
-		</tr>
-
-
-	</table>
-
+		</table>
+	</div>
 
 
 </body>

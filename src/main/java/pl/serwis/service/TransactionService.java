@@ -35,6 +35,14 @@ public class TransactionService {
 		// repository.save(tr);
 		 
 	 }
+	 
+	 public Transaction getTransactionById(String id)
+	 {
+		 Transaction tr = repository.getOne(Long.parseLong(id));
+		 
+		 return tr;
+		 
+	 }
 	
 	
 }
