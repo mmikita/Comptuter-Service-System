@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.assertj.core.util.Lists;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,7 +28,7 @@ public class ListOfTransactionController {
 	TransactionService tService;
 	
 	@RequestMapping("/serwis/allRepairs")
-	public String listOfAllTransactions(ModelMap model)
+	public String listOfAllTransactions(ModelMap model, HttpServletRequest req)
 	{
 	//List<String> states = Lists.newArrayList(new String[]{"oczekujaca","w trakcie","zakonczona"}); 
 List<String> states = new ArrayList<String>();
@@ -38,6 +39,9 @@ states.add("zakonczona");
 	model.addAttribute("states", states);
 		List<Transaction> allTransactions = tService.getAllTransactions();
 		model.addAttribute("transactions", allTransactions);
+		model.addAttribute("states", states);
+	    req.getSession().setAttribute("transactions", allTransactions);
+
 		return "TransactionsList";
 		       
 	}
@@ -46,6 +50,7 @@ states.add("zakonczona");
 	public String initTest(ModelMap model) throws JsonParseException, JsonMappingException, IOException
 	{
 
+		
 		List<Transaction> allTransactions = tService.getAllTransactions();
 		model.addAttribute("transactions", allTransactions);
 		service.initList();

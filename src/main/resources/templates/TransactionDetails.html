@@ -38,7 +38,7 @@
 							<li><a href="#">Bieżące naprawy</a></li>
 							<li><a href="#">Zakonczone naprawy</a></li>
 						</ul></li>
-						  <li><a href="#">Notatki</a></li>
+					<li><a href="#">Notatki</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -51,76 +51,89 @@
 			<dl class="dl-horizontal">
 				<dt>id naprawy</dt>
 				<dd th:text="*{id}"></dd>
-				
+
 				<dt>imie klienta</dt>
 				<dd th:text="*{clientName}"></dd>
-				
+
 				<dt>nazwisko klienta</dt>
 				<dd th:text="*{clientLastName}"></dd>
-				
+
 				<dt>model</dt>
 				<dd th:text="*{model}"></dd>
-				
-				
+
+
 				<dt>numer seryjny</dt>
 				<dd th:text="*{serialNumber}"></dd>
-				
+
 				<dt>telefon</dt>
 				<dd th:text="*{phoneNumber}"></dd>
-				
+
 				<dt>E-mail</dt>
 				<dd th:text="*{clientmail}"></dd>
-				
-			
-				
-					<dt>Data rozpoczecia</dt>
-				<dd th:if="${tr.startDate != null}" th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></dd>
+
+
+
+				<dt>Data rozpoczecia</dt>
+				<dd th:if="${tr.startDate != null}"
+					th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></dd>
 				<dd th:if="${tr.startDate == null}">-</dd>
-				
+
 				<dt>Data zakonczenia</dt>
-				<dd th:if="${tr.endDate != null}" th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></dd>
+				<dd th:if="${tr.endDate != null}"
+					th:text="${#dates.format(tr.endDate, 'dd-MMM-yyyy')}"></dd>
 				<dd th:if="${tr.endDate == null}">-</dd>
-				
+
 				<dt>sposob dostarczenia</dt>
 				<dd th:text="*{deliveryMethod}">-</dd>
-				
+
 				<dt>status</dt>
 				<dd th:text="*{status}">-</dd>
-				
+
 				<dt>koszt</dt>
 				<dd th:text="*{price}"></dd>
-				
+
 				<dt>uwagi</dt>
 				<dd th:text="*{comments}">-</dd>
 			</dl>
-			
+
 
 		</div>
-		
-            <div class="row" style="padding-bottom: 30px">
-                <div class="col-xs-6 col-sm-3">
-                    <a th:href="@{/serwis/editRepair/{id}(id=${tr.id})}">Edytuj</a>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <a href="#">Usun</a>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <a href="#">Wydrukuj potwierdzenie</a>
-                </div>
-                   <div class="col-xs-6 col-sm-3">
-                    <a href="#">Wydrukuj fakture</a>
-                </div>
-                
-                
-            </div>
+
+		<div class="row" style="padding-bottom: 30px">
+			<div class="col-xs-6 col-sm-3">
+				<a th:href="@{/serwis/editRepair/{id}(id=${tr.id})}">Edytuj</a>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<form onsubmit="return confirm('Jestes pewny?');" method="post" action="/serwis/deleteOne">
+					<input 
+				 type="hidden" th:value="${tr.id}" name="id" id="id"
+				 
+/> <input
+						type="submit" value="usun" style=
+"
+background-color: transparent;
+border: none;
+cursor: pointer;
+cursor: hand;" />
+				</form>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<a href="#">Wydrukuj potwierdzenie</a>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<a href="#">Wydrukuj fakture</a>
+			</div>
+
+
+		</div>
 
 		<div class="row">
-		<!-- 
+			<!-- 
 		<div id="opcje" class="col-md-3 col-md-offset-3">
 		<a th:href="@{/serwis/editRepair/{id}(id=${tr.id})}">Edytuj</a>
 		</div>
 		 -->
-</div>
+		</div>
 
 
 	</div>

@@ -49,6 +49,11 @@ public class TransactionService {
 		 return tr;
 		 
 	 }
+	 public void deleteTransactionById(String id)
+	 {
+		 repository.delete(Long.parseLong(id));
+		 
+	 }
 	
 	
 }

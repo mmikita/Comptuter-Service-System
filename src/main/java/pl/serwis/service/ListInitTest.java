@@ -25,7 +25,7 @@ public class ListInitTest {
 	{
 		
 		ObjectMapper mapper = new ObjectMapper();
-		Transaction[] array = mapper.readValue(new File("C:\\Users\\Paster0\\Desktop\\serwis\\listTransaction.json"),  Transaction[].class);
+		Transaction[] array = mapper.readValue(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\initTransatcions\\listTransaction.json"),  Transaction[].class);
 		List<Transaction> transArray = Arrays.asList(array);
 		saveTestRepairsToDatabase(transArray);
 	}
