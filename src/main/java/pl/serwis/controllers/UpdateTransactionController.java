@@ -28,6 +28,7 @@ public UpdateTransactionController()
 	states.add("oczekujaca");
 	states.add("w trakcie");
 	states.add("zakonczona");
+	states.add("nieodbyta");
 
 }
 	@Autowired

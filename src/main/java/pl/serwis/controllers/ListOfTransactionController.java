@@ -26,36 +26,34 @@ public class ListOfTransactionController {
 
 	@Autowired
 	TransactionService tService;
-	
-	@RequestMapping("/serwis/allRepairs")
-	public String listOfAllTransactions(ModelMap model, HttpServletRequest req)
-	{
-	//List<String> states = Lists.newArrayList(new String[]{"oczekujaca","w trakcie","zakonczona"}); 
-List<String> states = new ArrayList<String>();
-states.add("oczekujaca");
-states.add("w trakcie");
-states.add("zakonczona");
 
-	model.addAttribute("states", states);
+	@RequestMapping("/serwis/allRepairs")
+	public String listOfAllTransactions(ModelMap model, HttpServletRequest req) {
+		// List<String> states = Lists.newArrayList(new String[]{"oczekujaca","w
+		// trakcie","zakonczona"});
+		List<String> states = new ArrayList<String>();
+		states.add("oczekujaca");
+		states.add("w trakcie");
+		states.add("zakonczona");
+		states.add("nieodbyta");
+
+		model.addAttribute("states", states);
 		List<Transaction> allTransactions = tService.getAllTransactions();
 		model.addAttribute("transactions", allTransactions);
 		model.addAttribute("states", states);
-	    req.getSession().setAttribute("transactions", allTransactions);
+		req.getSession().setAttribute("transactions", allTransactions);
 
 		return "TransactionsList";
-		       
-	}
-	
-	@RequestMapping("/serwis/initTest")
-	public String initTest(ModelMap model) throws JsonParseException, JsonMappingException, IOException
-	{
 
-		
+	}
+
+	@RequestMapping("/serwis/initTest")
+	public String initTest(ModelMap model) throws JsonParseException, JsonMappingException, IOException {
 		List<Transaction> allTransactions = tService.getAllTransactions();
 		model.addAttribute("transactions", allTransactions);
 		service.initList();
 		return "TransactionsList";
-		       
+
 	}
-	
+
 }

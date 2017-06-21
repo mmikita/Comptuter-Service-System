@@ -1,6 +1,7 @@
 package pl.serwis.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,10 +34,12 @@ public class AddTransactionController {
 	}
 	
 	@RequestMapping(value = "/serwis/add", method=RequestMethod.POST)
-	public String addTransactionPost(@ModelAttribute Transaction tr) {
+	public String addTransactionPost(@ModelAttribute Transaction tr, ModelMap model) {
 	
 		service.addTranstacion(tr);
-		return "MainPage";
+		List<Transaction> transactions = service.getAllTransactions();
+		model.addAttribute("transactions", transactions);
+		return "TransactionList";
 	}
 
 }

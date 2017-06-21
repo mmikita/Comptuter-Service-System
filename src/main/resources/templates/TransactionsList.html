@@ -33,7 +33,7 @@
 <body>
 
 	<header>
-			
+
 		<div class="row">
 			<div class="center col-md-6 text-center"
 				style="font-size: 40px; margin-top: 60px;">System serwisu
@@ -53,104 +53,115 @@
 						data-toggle="dropdown" href="#">Lista napraw<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li class="active"><a href="/serwis/allRepairs">Wszystkie naprawy</a></li>
-							<li><a href="#">Oczekujące naprawy</a></li>
-							<li><a href="#">Bieżące naprawy</a></li>
-							<li><a href="#">Zakonczone naprawy</a></li>
+							<li><a href="/serwis/allRepairs">Wszystkie
+									naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/oczekujaca">Oczekujące naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/w trakcie">Bieżące naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/zakonczona">Zakonczone naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/nieodbyta">Nieodbyte naprawy</a></li>
 						</ul></li>
 					<li><a href="#">Notatki</a></li>
 				</ul>
 			</div>
 		</nav>
 
-	
+
 
 	</header>
-	
-	<button class="btn btn-info" style="margin-bottom: 10px; margin-left: 90px" id="hide" onclick="toggle_visibility('filtry');">Opcje filtrowania: pokaz/ukryj</button>
 
-		<div id="filtry" class="row"
-			style="width: 1200px; display:none; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
-			<div id="searchByprice" class="col-xs-6 col-sm-4">
-				Filtruj po cenie
-				<form class="form-horizontal" method="POST" 
+	<button class="btn btn-info"
+		style="margin-bottom: 10px; margin-left: 90px" id="hide"
+		onclick="toggle_visibility('filtry');">Opcje filtrowania:
+		pokaz/ukryj</button>
+
+	<div id="filtry" class="row"
+		style="width: 1200px; display: none; margin-left: auto; margin-right: auto; padding-bottom: 10px;">
+		<div id="searchByprice" class="col-xs-6 col-sm-4">
+			Filtruj po cenie
+			<form class="form-horizontal" method="POST"
 				action="/serwis/allRepairs/filterByCost">
-				<input type="hidden" name="state" value="all"/>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input name="min" type="text" class="form-control" id="min"
-								placeholder="Minimalny koszt" />
-						</div>
+				<input type="hidden" name="state" 
+				
+				value="all" 
+				
+				/>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input name="min" type="text" class="form-control" id="min"
+							placeholder="Minimalny koszt" />
 					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input name="max" type="text" class="form-control" id="max"
-								placeholder="Maksymalny koszt" />
-						</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input name="max" type="text" class="form-control" id="max"
+							placeholder="Maksymalny koszt" />
 					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default"
-								style="margin-left: 175px;">Filtruj</button>
-						</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default"
+							style="margin-left: 175px;">Filtruj</button>
 					</div>
-				</form>
+				</div>
+			</form>
 
 
-			</div>
-
-
-			<div id="searchBySerial" class="col-xs-6 col-sm-4">
-				Filtruj po dacie
-				<form class="form-horizontal">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="inputEmail3"
-								placeholder="Data poczatkowa" />
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="inputPassword3"
-								placeholder="Data koncowa" />
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default"
-								style="margin-left: 175px;">Filtruj</button>
-						</div>
-					</div>
-				</form>
-
-
-
-
-			</div>
-			<!-- Optional: clear the XS cols if their content doesn't match in height -->
-			<div class="clearfix visible-xs-block"></div>
-			<div class="col-xs-6 col-sm-4">
-				Wyszukaj
-				<form class="form-horizontal">
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="inputEmail3"
-								placeholder="Cokolwiek" />
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default"
-								style="margin-left: 175px;">Szukaj</button>
-						</div>
-					</div>
-				</form>
-
-
-			</div>
 		</div>
-	
-	
+
+
+		<div id="searchBySerial" class="col-xs-6 col-sm-4">
+			Filtruj po dacie
+			<form method="POST" action="/serwis/allRepairs/filterByDate"
+				class="form-horizontal">
+				<input type="hidden" name="state" value="all" />
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input name="startDate" type="date" class="form-control"
+							placeholder="Data poczatkowa" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input name="endDate" type="Date" class="form-control"
+							placeholder="Data koncowa" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default"
+							style="margin-left: 175px;">Filtruj</button>
+					</div>
+				</div>
+			</form>
+
+
+
+
+		</div>
+		<!-- Optional: clear the XS cols if their content doesn't match in height -->
+		<div class="clearfix visible-xs-block"></div>
+		<div class="col-xs-6 col-sm-4">
+			Wyszukaj
+			<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="email" class="form-control" id="inputEmail3"
+							placeholder="Cokolwiek" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default"
+							style="margin-left: 175px;">Szukaj</button>
+					</div>
+				</div>
+			</form>
+
+
+		</div>
+	</div>
+
+
 	<div style="width: 1100px; margin-left: auto; margin-right: auto;">
 
 		<table class="table">

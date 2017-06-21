@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pl.seriws.model.Transaction;
-import pl.seriws.repository.TransactionRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,7 +29,7 @@ public class SerwisApplicationTests {
 //		mapper.writeValue(new File("C:\\Users\\Paster0\\Desktop\\serwis\\testP.json"), tr);
 
 
-System.out.println("DZIAlaj!!!!!");
+//System.out.println("DZIAlaj!!!!!");
 //		List<Transaction> trRead = mapper.readValue(new File("C:\\Users\\Paster0\\Desktop\\serwis\\listTransaction.json"), new List<Transaction>(){});
 		Transaction[] array = mapper.readValue(new File("C:\\Users\\Paster0\\Desktop\\serwis\\listTransaction.json"),  Transaction[].class);
 		List<Transaction> transArray = Arrays.asList(array);
