@@ -1,5 +1,6 @@
 package pl.serwis.controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,17 @@ public class AddTransactionController {
 	
 	@Autowired
 	TransactionService service;
+	List<String> states = new ArrayList<String>();
+
+	public AddTransactionController()
+	{
+		states = new ArrayList<String>();
+		states.add("oczekujaca");
+		states.add("w trakcie");
+		states.add("zakonczona");
+		states.add("nieodbyta");
+
+	}
 
 	@RequestMapping("/serwis")
 	public String mainController() {
@@ -39,7 +51,9 @@ public class AddTransactionController {
 		service.addTranstacion(tr);
 		List<Transaction> transactions = service.getAllTransactions();
 		model.addAttribute("transactions", transactions);
-		return "TransactionList";
+		model.addAttribute("states", states);
+
+		return "TransactionsList";
 	}
 
 }

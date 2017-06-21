@@ -2,6 +2,7 @@ package pl.seriws.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +26,9 @@ public class Transaction {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 	private String model;
+	@Column(columnDefinition="LONGVARCHAR")
 	private String comments;
+	@Column(columnDefinition="LONGVARCHAR")
 	private String deliveryMethod;
 	private String status;
 	
