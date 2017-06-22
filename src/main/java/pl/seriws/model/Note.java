@@ -10,6 +10,8 @@ public class Note {
 	@Id
 	@GeneratedValue
 	private Long id;
+	private String note;
+
 	@Override
 	public String toString() {
 		return "Note [id=" + id + ", note=" + note + "]";
@@ -26,5 +28,4 @@ public class Note {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	private String note;
 }

@@ -25,23 +25,29 @@
 		</div>
 
 
-		<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default">
 			<div class="container-fluid" style="margin-left: 110px;">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/serwis/add">Dodaj naprawe</a></li>
+					<li><a href="/serwis/add">Dodaj naprawe</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Lista napraw<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/serwis/allRepairs">Wszystkie naprawy</a></li>
-							<li><a href="#">Oczekujące naprawy</a></li>
-							<li><a href="#">Bieżące naprawy</a></li>
-							<li><a href="#">Zakonczone naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/oczekujaca">Oczekujące
+									naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/w trakcie">Bieżące
+									naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/zakonczona">Zakonczone
+									naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/nieodbyta">Nieodbyte
+									naprawy</a></li>
 						</ul></li>
-					<li><a href="#">Notatki</a></li>
+					<li><a href="/serwis/notes">Notatki</a></li>
 				</ul>
 			</div>
 		</nav>
+
 
 	</header>
 

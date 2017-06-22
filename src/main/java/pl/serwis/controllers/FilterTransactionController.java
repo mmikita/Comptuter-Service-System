@@ -25,6 +25,15 @@ import pl.serwis.service.FilterPriceService;
 public class FilterTransactionController {
 	List<String> states = new ArrayList<String>();
 
+	@Autowired
+	FilterPriceService priceService;
+
+	@Autowired
+	FilterDateService dateService;
+
+	@Autowired
+	FilterByStatus statusService;
+
 	public FilterTransactionController() {
 		states = new ArrayList<String>();
 		states.add("oczekujaca");
@@ -34,15 +43,25 @@ public class FilterTransactionController {
 
 	}
 
-	@Autowired
-	FilterPriceService priceService;
+	@RequestMapping(value = "/serwis/allRepairs/filterByDate", method = RequestMethod.POST)
+	public String FilterByDate(HttpServletRequest req, ModelMap model) throws ParseException {
+		DateFormat formatter = new SimpleDateFormat("yyy-MM-dd");
 
-	@Autowired
-	FilterDateService dateService;
-	
+		String minStr = req.getParameter("startDate");
+		String maxStr = req.getParameter("endDate");
+		// System.out.println(minStr + " " + maxStr);
+		Date startDate = formatter.parse(minStr);
+		Date endDate = new Date();
+		if (maxStr != "")
+			endDate = formatter.parse(maxStr);
+		String state = req.getParameter("state");
+		List<Transaction> transactions = dateService.FilterByDate(startDate, endDate, state);
+		model.addAttribute("transactions", transactions);
+		req.getSession().setAttribute("transactions", transactions);
+		model.addAttribute("states", states);
 
-	@Autowired
-	FilterByStatus statusService;
+		return "TransactionsList";
+	}
 
 	@RequestMapping(value = "/serwis/allRepairs/filterByCost", method = RequestMethod.POST)
 	public String FilterByPrice(HttpServletRequest req, ModelMap model) {
@@ -56,30 +75,11 @@ public class FilterTransactionController {
 
 		return "TransactionsList";
 	}
-	
+
 	@RequestMapping(value = "/serwis/filterByStatus/{status}", method = RequestMethod.GET)
-	public String FilterByStatus(HttpServletRequest req,@PathVariable String status, ModelMap model) {
-	
-List<Transaction> transactions = statusService.FilterByStatus(status);
-model.addAttribute("transactions", transactions);
-req.getSession().setAttribute("transactions", transactions);
-model.addAttribute("states", states);
+	public String FilterByStatus(HttpServletRequest req, @PathVariable String status, ModelMap model) {
 
-		return "TransactionsList";
-	}
-
-	@RequestMapping(value = "/serwis/allRepairs/filterByDate", method = RequestMethod.POST)
-	public String FilterByDate(HttpServletRequest req, ModelMap model) throws ParseException {
-		DateFormat formatter = new SimpleDateFormat("yyy-MM-dd");
-
-		String minStr = req.getParameter("startDate");
-		String maxStr = req.getParameter("endDate");
-	//	System.out.println(minStr + "  " + maxStr);
-		Date startDate = formatter.parse(minStr);
-		Date endDate = new Date();
-		if(maxStr != "") endDate = formatter.parse(maxStr);
-		String state = req.getParameter("state");
-		List<Transaction> transactions = dateService.FilterByDate(startDate, endDate, state);
+		List<Transaction> transactions = statusService.FilterByStatus(status);
 		model.addAttribute("transactions", transactions);
 		req.getSession().setAttribute("transactions", transactions);
 		model.addAttribute("states", states);

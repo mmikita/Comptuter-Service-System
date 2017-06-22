@@ -63,7 +63,7 @@
 							<li><a href="/serwis/filterByStatus/nieodbyta">Nieodbyte
 									naprawy</a></li>
 						</ul></li>
-					<li><a href="#">Notatki</a></li>
+					<li><a href="/serwis/notes">Notatki</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -84,11 +84,16 @@
 			<form class="form-horizontal" method="POST"
 				action="/serwis/allRepairs/filterByCost">
 				<div th:switch="${#httpServletRequest.requestURI}">
-					<input th:case="'/serwis/allRepairs'" type="hidden" name="state" value="all" />
-					<input th:case="'/serwis/filterByStatus/oczekujaca'" type="hidden" name="state" value="oczekujaca" />
-					<input th:case="'/serwis/filterByStatus/w%20trakcie'" type="hidden" name="state" value="w trakcie" />
-					<input th:case="'/serwis/filterByStatus/zakonczona'" type="hidden" name="state" value="zakonczona" />
-					<input th:case="'/serwis/filterByStatus/nieodbyta'" type="hidden" name="state" value="nieodbyta" />
+					<input th:case="'/serwis/allRepairs'" type="hidden" name="state"
+						value="all" /> <input
+						th:case="'/serwis/filterByStatus/oczekujaca'" type="hidden"
+						name="state" value="oczekujaca" /> <input
+						th:case="'/serwis/filterByStatus/w%20trakcie'" type="hidden"
+						name="state" value="w trakcie" /> <input
+						th:case="'/serwis/filterByStatus/zakonczona'" type="hidden"
+						name="state" value="zakonczona" /> <input
+						th:case="'/serwis/filterByStatus/nieodbyta'" type="hidden"
+						name="state" value="nieodbyta" />
 				</div>
 
 				<div class="form-group">
