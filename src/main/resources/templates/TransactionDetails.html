@@ -110,17 +110,11 @@
 				<a th:href="@{/serwis/editRepair/{id}(id=${tr.id})}">Edytuj</a>
 			</div>
 			<div class="col-xs-6 col-sm-3">
-				<form onsubmit="return confirm('Jestes pewny?');" method="post" action="/serwis/deleteOne">
-					<input 
-				 type="hidden" th:value="${tr.id}" name="id" id="id"
-				 
-/> <input
-						type="submit" value="usun" style=
-"
-background-color: transparent;
-border: none;
-cursor: pointer;
-cursor: hand;" />
+				<form onsubmit="return confirm('Jestes pewny?');" method="post"
+					action="/serwis/deleteOne">
+					<input type="hidden" th:value="${tr.id}" name="id" id="id" />
+					<input type="submit" value="usun"
+						style="background-color: transparent; border: none; cursor: pointer; cursor: hand;" />
 				</form>
 			</div>
 			<div class="col-xs-6 col-sm-3">
