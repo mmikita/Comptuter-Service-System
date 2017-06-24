@@ -10,7 +10,7 @@ import pl.seriws.model.Transaction;
 import pl.seriws.repository.TransactionRepository;
 
 @Service
-public class FilterByStatus
+public class FilterByStatusService
 {
 	
 	

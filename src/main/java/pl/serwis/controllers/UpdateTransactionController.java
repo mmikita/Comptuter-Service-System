@@ -44,6 +44,7 @@ public UpdateTransactionController()
 		//System.out.println("nowz status: " + req.getParameter("status"));
 		long id = Long.valueOf(req.getParameter("id"));
 		service.updateTransactionStatus(req.getParameter("id"), req.getParameter("status"));
+		@SuppressWarnings("unchecked")
 		List<Transaction> transactions = (List<Transaction>)req.getSession().getAttribute("transactions");
 		List<Transaction> trs = (List<Transaction>) transactions.stream().filter(n -> (n.getId()==id)).limit(2).collect(Collectors.toList());
 		trs.get(0).setStatus(req.getParameter("status"));

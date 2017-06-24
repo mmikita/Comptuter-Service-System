@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.seriws.model.Transaction;
-import pl.serwis.service.FilterByStatus;
+import pl.serwis.service.FilterByStatusService;
 import pl.serwis.service.FilterDateService;
 import pl.serwis.service.FilterPriceService;
 
@@ -32,7 +32,7 @@ public class FilterTransactionController {
 	FilterDateService dateService;
 
 	@Autowired
-	FilterByStatus statusService;
+	FilterByStatusService statusService;
 
 	public FilterTransactionController() {
 		states = new ArrayList<String>();

@@ -41,6 +41,7 @@ public class SerwisApplicationTests {
 	
 	}
 
+	@SuppressWarnings("unused")
 	private Transaction createDummy() {
 		Transaction tr = new Transaction();
 		tr.setClientLastName("ogorek");
