@@ -58,8 +58,13 @@ public class FilterTransactionController {
 		if (req.getParameter("state") != null) {
 			state = req.getParameter("state");
 			req.getSession().setAttribute("state", state);
-		} else {
+		} else if(req.getSession().getAttribute("state")!=null) {
 			state = (String) req.getSession().getAttribute("state");
+		}
+		else
+		{
+			state = (String) req.getSession().getAttribute("state");
+
 		}
 
 		List<Transaction> transactions = dateService.FilterByDate(startDate, endDate, state);
@@ -79,8 +84,13 @@ public class FilterTransactionController {
 		if (req.getParameter("state") != null) {
 			state = req.getParameter("state");
 			req.getSession().setAttribute("state", state);
-		} else {
+		} else if(req.getSession().getAttribute("state")!=null) {
 			state = (String) req.getSession().getAttribute("state");
+		}
+		else
+		{
+			state = (String) req.getSession().getAttribute("state");
+
 		}
 
 		List<Transaction> transactions = priceService.FilterByPrice(min, max, state);
@@ -102,4 +112,6 @@ public class FilterTransactionController {
 		return "TransactionsList";
 	}
 
+	
+	
 }
