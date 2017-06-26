@@ -37,7 +37,7 @@ public class FilterDateService {
 		}
 		else 
 		{
-			transactions = transactions.stream().filter(n -> ((n.getEndDate()!=null)&&n.getStartDate().after(startDate)) && (n.getEndDate().before(endDate)&& n.getStatus().equals(state)))
+			transactions = transactions.stream().filter(n -> (n.getEndDate()!=null)&&(n.getStartDate().after(startDate)) && (n.getEndDate().before(endDate))&& n.getStatus().equals(state))
 					.collect(Collectors.toList());
 					
 					

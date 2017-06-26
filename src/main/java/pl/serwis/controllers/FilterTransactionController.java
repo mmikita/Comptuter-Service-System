@@ -54,7 +54,14 @@ public class FilterTransactionController {
 		Date endDate = new Date();
 		if (maxStr != "")
 			endDate = formatter.parse(maxStr);
-		String state = req.getParameter("state");
+		String state;
+		if (req.getParameter("state") != null) {
+			state = req.getParameter("state");
+			req.getSession().setAttribute("state", state);
+		} else {
+			state = (String) req.getSession().getAttribute("state");
+		}
+
 		List<Transaction> transactions = dateService.FilterByDate(startDate, endDate, state);
 		model.addAttribute("transactions", transactions);
 		req.getSession().setAttribute("transactions", transactions);
@@ -67,7 +74,15 @@ public class FilterTransactionController {
 	public String FilterByPrice(HttpServletRequest req, ModelMap model) {
 		String min = req.getParameter("min");
 		String max = req.getParameter("max");
-		String state = req.getParameter("state");
+		String state;
+
+		if (req.getParameter("state") != null) {
+			state = req.getParameter("state");
+			req.getSession().setAttribute("state", state);
+		} else {
+			state = (String) req.getSession().getAttribute("state");
+		}
+
 		List<Transaction> transactions = priceService.FilterByPrice(min, max, state);
 		model.addAttribute("transactions", transactions);
 		req.getSession().setAttribute("transactions", transactions);

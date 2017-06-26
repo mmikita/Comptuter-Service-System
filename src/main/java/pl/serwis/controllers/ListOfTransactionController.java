@@ -49,8 +49,8 @@ public class ListOfTransactionController {
 
 	@RequestMapping("/serwis/initTest")
 	public String initTest(ModelMap model) throws JsonParseException, JsonMappingException, IOException {
-//		List<Transaction> allTransactions = tService.getAllTransactions();
-//		model.addAttribute("transactions", allTransactions);
+		// List<Transaction> allTransactions = tService.getAllTransactions();
+		// model.addAttribute("transactions", allTransactions);
 		List<String> states = new ArrayList<String>();
 
 		states.add("oczekujaca");
