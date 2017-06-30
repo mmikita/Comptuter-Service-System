@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pl.seriws.model.Transaction;
+import pl.serwis.model.Transaction;
 import pl.serwis.service.TransactionService;
 
 @Controller
@@ -34,7 +34,7 @@ public class AddTransactionController {
 	@RequestMapping("/serwis")
 	public String mainController() {
 
-		return "MainPage";
+		return "redirect:/serwis/allRepairs";
 	}
 
 	@RequestMapping("/serwis/add")

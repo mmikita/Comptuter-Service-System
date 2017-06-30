@@ -1,4 +1,4 @@
-package pl.seriws.model;
+package pl.serwis.model;
 
 import java.util.Date;
 

@@ -20,8 +20,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 
-import pl.seriws.model.Transaction;
-import pl.seriws.repository.TransactionRepository;
+import pl.serwis.model.Transaction;
+import pl.serwis.repository.TransactionRepository;
 import pl.serwis.service.FilterDateService;
 import pl.serwis.service.FilterPriceService;
 

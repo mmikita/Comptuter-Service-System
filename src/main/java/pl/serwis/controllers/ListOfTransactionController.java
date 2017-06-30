@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import pl.seriws.model.Transaction;
+import pl.serwis.model.Transaction;
 import pl.serwis.service.ListInitTest;
 import pl.serwis.service.TransactionService;
 

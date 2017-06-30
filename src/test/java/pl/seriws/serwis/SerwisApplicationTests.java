@@ -15,7 +15,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pl.seriws.model.Transaction;
+import pl.serwis.model.Transaction;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

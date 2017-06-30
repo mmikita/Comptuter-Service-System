@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
 
-import pl.seriws.model.Transaction;
-import pl.seriws.repository.TransactionRepository;
+import pl.serwis.model.Transaction;
+import pl.serwis.repository.TransactionRepository;
 
 @Service
 public class FilterPriceService {

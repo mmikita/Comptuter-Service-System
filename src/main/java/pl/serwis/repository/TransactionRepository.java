@@ -1,9 +1,9 @@
-package pl.seriws.repository;
+package pl.serwis.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import pl.seriws.model.Transaction;
+import pl.serwis.model.Transaction;
 
 
 @Repository

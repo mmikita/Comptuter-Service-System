@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pl.seriws.model.Transaction;
+import pl.serwis.model.Transaction;
 import pl.serwis.service.FilterByStatusService;
 import pl.serwis.service.FilterDateService;
 import pl.serwis.service.FilterPriceService;

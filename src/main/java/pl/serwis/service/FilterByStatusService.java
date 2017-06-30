@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pl.seriws.model.Transaction;
-import pl.seriws.repository.TransactionRepository;
+import pl.serwis.model.Transaction;
+import pl.serwis.repository.TransactionRepository;
 
 @Service
 public class FilterByStatusService

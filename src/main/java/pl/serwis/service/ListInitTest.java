@@ -12,8 +12,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pl.seriws.model.Transaction;
-import pl.seriws.repository.TransactionRepository;
+import pl.serwis.model.Transaction;
+import pl.serwis.repository.TransactionRepository;
 
 @Service
 public class ListInitTest {
