@@ -207,7 +207,6 @@
 				<td th:text="${tr.clientName}"></td>
 				<td th:text="${tr.clientLastName}"></td>
 				<td th:text="${tr.price}"></td>
-				<td th:text="${tr.model}"></td>
 
 				<td th:if="${tr.startDate != null}"
 					th:text="${#dates.format(tr.startDate, 'dd-MMM-yyyy')}"></td>
@@ -235,6 +234,7 @@
 				</td>
 				<td><a th:href="@{/serwis/repairDetails/{id}(id=${tr.id})}">
 						szczegóły</a></td>
+				<td th:text="${tr.uuid}"></td>
 			</tr>
 
 

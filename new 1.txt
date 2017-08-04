@@ -1,0 +1,10 @@
+BookShop is Java Web Application, that was created in order to learn Spring and Hibernate.  
+The application presents a simplified website and order-system of bookshop. It is divided into two parts, standard user site and bookstore administrator panel.
+
+The application is WAR type, so it should be run on a server, eg Apache Tomcat. It also need proper database named "ksiegarnia" to work. Example database file is in folder Ksiegarnia\src\main\resources\ksiegarnia.sql
+
+To get into admin panel, you should type in Web Adress, "localhost:8080/ksiegarnia/admin" 
+login and password in Spring Security:
+name="admin" password="123" 
+
+I know it is far from clean code, but that was my first amv application.

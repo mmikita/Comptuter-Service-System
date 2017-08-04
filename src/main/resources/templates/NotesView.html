@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org/">
+<head>
+<meta charset="UTF-8" />
+<title>Notatki</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link th:href="@{/css/bootstrap.min.css}" type="text/css"
+	rel="stylesheet" />
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<script th:inline="javascript">
+	//<![CDATA[ 
+
+	function htmlDecode(value) {
+		return $('<div/>').html(value).text();
+	}
+
+	function editNoteBlock(id) {
+		var oldNote = $("#note" + id).html();
+		//oldNote = oldNote.replace(" ", "\n");
+		oldNote = oldNote.split("<br>").join("\n");
+
+		var editNoteForminString = '<form class="form-horizontal" action="/serwis/editNote" method="post">'
+				+ '<input id="id" name="id" type="hidden" value="'+id+'" />'
+				+ '<label for="text">Edytuj notatke</label>'
+				+ '<textarea id="note" name="note" class="form-control" rows="3">'
+				+ oldNote
+				+ '</textarea>'
+				+ '<div class="pull-right">'
+				+ '<a href="/serwis/notes">Anuluj</a>'
+				+ '<input type="submit" value="Edytuj" style="margin-top: 10px; margin-left: 20px" />'
+				+ '</div>' + '</form>';
+
+		var editNoteForm = $("#editNoteForm").html();
+		//'noteBlock'+${note.id}
+		$("#noteBlock" + id).html(editNoteForminString);
+		//window.alert("moja notatka to "+  oldNote);
+
+	}
+
+	//]]>
+</script>
+
+
+</head>
+<body>
+
+	<header>
+		<div class="row">
+			<div class="center col-md-6 text-center"
+				style="font-size: 40px; margin-top: 60px;">System serwisu
+				komputerowego</div>
+			<div>
+
+				<img th:src="@{/img/mother-board.jpg}" class="col-md-6 img-circle"
+					style="width: 250px; height: 200px;" />
+			</div>
+		</div>
+
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid" style="margin-left: 110px;">
+				<ul class="nav navbar-nav">
+					<li><a href="/serwis/add">Dodaj naprawe</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Lista napraw<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/serwis/allRepairs">Wszystkie naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/oczekujaca">Oczekujące
+									naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/w trakcie">Bieżące
+									naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/zakonczona">Zakonczone
+									naprawy</a></li>
+							<li><a href="/serwis/filterByStatus/nieodbyta">Nieodbyte
+									naprawy</a></li>
+						</ul></li>
+					<li><a href="/serwis/notes">Notatki</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<div style="width: 1000px">
+			<form class="form-horizontal" action="/serwis/addNote" method="post">
+				<label for="text">Dodaj nową notatkę</label>
+				<textarea id="note" name="note" class="form-control" rows="3"></textarea>
+				<input type="submit" value="Dodaj"
+					class="btn btn-default btn pull-right" style="margin-top: 10px;" />
+
+			</form>
+
+
+
+		</div>
+		<br /> <br /> <br />
+		<div th:id="'noteBlock'+${note.id}" th:each="note :${notes}"
+			style="margin-top: 10px; margin-bottom: 10px;">
+			<div class="row">
+
+				<div th:id="'note'+${note.id}"
+					th:utext="${#strings.replace( #strings.escapeXml(note.note),
+		T(java.lang.System).getProperty('line.separator'),'&lt;br&gt;')}"
+					class="bg-info col-md-8"></div>
+
+				<div class="col-md-4">
+
+
+
+					<input type="button" value=" Edytuj" th:id="'editNote'+${note.id}"
+						th:attr="onclick='javascript:editNoteBlock(\'' + ${note.id} + '\');'"
+						style="background-color: transparent; border: none; cursor: pointer; cursor: hand;" />
+
+					<!-- usun notatke-->
+					<form style="margin-top: 8px;"
+						onsubmit="return confirm('Jestes pewny?');" method="post"
+						action="/serwis/deleteNote">
+						<input type="hidden" name="id" id="id" th:value="${note.id}" /> <input
+							type="submit" value=" Usun"
+							style="background-color: transparent; border: none; cursor: pointer; cursor: hand;" />
+					</form>
+				</div>
+			</div>
+
+			<!-- 
+				<form class="form-horizontal" action="/serwis/addNote" method="post">
+	<label for="text">Dodaj nową notatkę</label>
+	<textarea id="note" name="note" class="form-control" rows="3" th:inline="text">[[${note.note}]]</textarea>
+	<div class="pull-right">
+	<a href="#">Anuluj</a>
+	<input type="submit" value="Edytuj"
+		style="margin-top: 10px; margin-left: 20px" />
+	</div>
+
+</form>
+			
+		 -->
+
+		</div>
+
+
+	</div>
+
+
+
+
+</body>
+</html>
