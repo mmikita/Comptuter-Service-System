@@ -2,7 +2,6 @@ package pl.serwis.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -32,7 +31,6 @@ public class GenerateDocumentController {
 		
 		File file = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\plikPDF.pdf");
         InputStream in = new FileInputStream(file);
-		System.out.println("generujemy");
 		
 		response.setContentType("pdf");
         response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
