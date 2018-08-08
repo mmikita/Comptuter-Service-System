@@ -1,9 +1,4 @@
+Java application in spring framework created to manage computer service system. 
+Used database can be easily change by modify file: 'ContactsOrganizerWebApp\src\main\resources\META-INF\database.properties'.
 
-
-Web Application written in Java in Spring MVC using embedded Database. 
-
-To initialize 
-
- file contains database that is necessary for aplication to work. I used XAMPP/PHPMyadmin with standard configuration, but database source can be changed easily by modifying database.properties file which is stored in path 'ContactsOrganizerWebApp\src\main\resources\META-INF'.
-
-To open initial page, for example after running application with Tomcat server, input path into browser: localhost:Tomcat_port_number/contacts
+To open initial page, after run application type in the web browser: localhost:(TomcatPortNumber)/contacts
